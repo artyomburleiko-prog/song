@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .sound-button {
+            width: 100vw;
+            height: 100vh;
+            font-size: 10vw;
+            font-weight: bold;
+            color: #fff;
+            background: #808080;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            user-select: none;
+            font-family: Arial, sans-serif;
+            text-transform: lowercase;
+            transition: background 0.2s ease;
+        }
+        .sound-button:hover {
+            background: #6e6e6e;
+        }
+        .sound-button:active {
+            background: #5c5c5c;
+        }
+    </style>
+</head>
+<body>
+    <button class="sound-button" id="playBtn">play</button>
+
+    <script>
+        const audioUrl = 'https://www.myinstants.com/media/sounds/mama-gde-pisia.mp3';
+        const audio = new Audio(audioUrl);
+        const btn = document.getElementById('playBtn');
+
+        btn.addEventListener('click', () => {
+            audio.currentTime = 0;
+            audio.play().catch(err => {
+                console.error('Ошибка воспроизведения:', err);
+                alert('Не удалось воспроизвести звук.');
+            });
+        });
+    </script>
+</body>
+</html>
